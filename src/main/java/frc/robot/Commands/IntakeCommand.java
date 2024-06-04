@@ -5,21 +5,11 @@
 package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Subsystems.Drivetrain;
 
-public class TeleopDrive extends Command {
-
-  private Drivetrain drivetrain;
-  private double speedX;
-  private double rot;
-
-  public TeleopDrive(Drivetrain drivetrain, double speedX, double rot) {
-    this.drivetrain = drivetrain;
-    this.speedX = speedX;
-    this.rot = rot;
-
+public class IntakeCommand extends Command {
+  /** Creates a new IntakeCommand. */
+  public IntakeCommand() {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(drivetrain);
   }
 
   // Called when the command is initially scheduled.
@@ -31,13 +21,13 @@ public class TeleopDrive extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    drivetrain.arcadeDrive(speedX, rot);
+
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drivetrain.arcadeDrive(0, 0);
+    
   }
 
   // Returns true when the command should end.
