@@ -19,7 +19,7 @@ public class RobotContainer {
   public RobotContainer() {
     //TODO: use the drivetrain subsystem and the teleopdrive command to set a default command
   
-
+    //BONUS TODO: create a selector that allows you to quicky change between autos
 
     configureBindings();
   }

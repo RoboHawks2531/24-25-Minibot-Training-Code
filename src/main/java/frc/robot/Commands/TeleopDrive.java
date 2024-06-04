@@ -25,7 +25,7 @@ public class TeleopDrive extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
+    //here is where you reset encoders, but we dont need to
   }
 
   // Called every time the scheduler runs while the command is scheduled.
