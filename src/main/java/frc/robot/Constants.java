@@ -12,6 +12,7 @@ public final class Constants {
     }
 
     public static final class ArmConstants {
+        public static final int armpivotmotor = 0;
         //make 3 motor constants for the arm pivot motor, the intake power motor, and the shoot motor.
     }
 }

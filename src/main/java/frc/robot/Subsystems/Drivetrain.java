@@ -5,6 +5,7 @@
 package frc.robot.Subsystems;
 
 import com.ctre.phoenix6.hardware.TalonFX;
+import com.ctre.phoenix6.signals.NeutralModeValue;
 
 import edu.wpi.first.math.estimator.PoseEstimator;
 import edu.wpi.first.math.kinematics.DifferentialDriveKinematics;
@@ -24,11 +25,11 @@ public class Drivetrain extends SubsystemBase {
 
   /** Creates a new Drivetrain. */
   public Drivetrain() {
-      //TODO: Set both motors to brake by default
+      leftMotor.setNeutralMode(NeutralModeValue.Brake);
+      rightMotor.setNeutralMode(NeutralModeValue.Brake);
 
-
-      //TODO: Now set the left motor to be inverted, and the right motor to not be inverted
-
+      leftMotor.setInverted(true);
+      rightMotor.setInverted(false);
   }
 
   public void setSplitMotorVolts(double leftVolts, double rightVolts) {
@@ -40,9 +41,8 @@ public class Drivetrain extends SubsystemBase {
       drive.arcadeDrive(speedX, rot);
   }
 
-  //TODO: Create a tankDrive method that takes in two doubles, leftSpeed and rightSpeed
-  public void tankDrive() {
-      //how would we call the tank drive method from the DifferentialDrive class?
+  public void tankDrive(double speedX, double rot) {
+    drive.tankDrive(speedX, rot);
   }
 
   @Override

@@ -7,19 +7,27 @@ package frc.robot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import frc.robot.Commands.PivotArmPIDCommand;
+import frc.robot.Commands.TeleopDrive;
 import frc.robot.Commands.Autos.DefaultAuto;
+import frc.robot.Subsystems.ArmPivot;
 import frc.robot.Subsystems.Drivetrain;
+import frc.robot.Subsystems.ShootAndIntake;
 
 public class RobotContainer {
   private final CommandXboxController driverController = new CommandXboxController(0);
 
   //TODO: initialize all subsystems here
   private Drivetrain drivetrain = new Drivetrain();
+  private ArmPivot armpivot = new ArmPivot();
+  private ShootAndIntake shootandintake = new ShootAndIntake();
 
   public RobotContainer() {
     //TODO: use the drivetrain subsystem and the teleopdrive command to set a default command
+    armpivot.setDefaultCommand(new TeleopDrive(drivetrain, -driverController.getLeftY(), -driverController.getRightX()));
   
     //BONUS TODO: create a selector that allows you to quicky change between autos
+    armpivot.ZeroEncoder();
 
     configureBindings();
   }
@@ -34,6 +42,9 @@ public class RobotContainer {
       resetting the pivot encoder,
       shooting,
       */
+      driverController.a().onTrue(new PivotArmPIDCommand(armpivot, 100));
+      driverController.x().onTrue(new PivotArmPIDCommand(armpivot, 0));
+
 
   }
 
